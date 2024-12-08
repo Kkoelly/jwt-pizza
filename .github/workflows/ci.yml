@@ -20,14 +20,15 @@ jobs:
               with:
                   node-version: "20.x"
 
+            - name: Build
+              run: |
+                  printf '{"version": "%s" }' ${{steps.set_version.outputs.version}} > public/version.json
+                  npm ci && npm run build
+
             - name: set version
               id: set_version
               run: |
                   echo "version=$(date +'%Y%m%d.%H%M%S')" >> "$GITHUB_OUTPUT"
-
-            - name: Build
-              run: |
-                  npm ci && npm run build
 
             - name: Run tests
               run: |
