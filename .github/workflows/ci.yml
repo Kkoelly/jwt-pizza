@@ -76,7 +76,7 @@ jobs:
 
             - name: Push to AWS S3
               run: |
-                  aws s3 cp dist s3://pizza.kellyko.click/$version --recursive
+                  aws s3 cp dist s3://pizza.kellyko/$version --recursive
 
             - name: Update the cloudfront distribution
               run: |
